@@ -24,15 +24,25 @@ class RingBuffer:
     #         """ return list of elements in correct order """
     #         return self.data[self.cur:]+self.data[:self.cur]
 
+# if capacity ==  len(list)
+# list.replace(0, x)
+
     def append(self,item): # x > item
         """append an element at the end of the buffer"""
-        self.data.append(item)
+        if len(self.data) == self.capacity:
+            self.data[0] = item
+            # for n in self.data:
+            #     if self.data[n] != item:
+            #         self.data[n] = item
+        else:
+            self.data.append(item)
         # if len(self.data) == self.capacity:
         #     self.cur = 0
         #     self.data[self.cur] = item #
         #     self.cur = (self.cur+1) % self.capacity #            
             # Permanently change self's class from non-full to full
             # self.__class__ = self.__Full
+        #
 
     def get(self):
         """ Return a list of elements from the oldest to the newest. """
